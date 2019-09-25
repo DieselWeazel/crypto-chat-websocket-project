@@ -8,7 +8,7 @@ import com.vaadin.flow.router.Route;
 public class Home extends VerticalLayout {
 
   public Home() {
-
+    // COMMENT
     add(new H1("Hem"));
   }
 }
