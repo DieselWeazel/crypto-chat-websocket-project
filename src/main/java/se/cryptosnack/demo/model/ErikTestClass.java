@@ -4,7 +4,7 @@ public class ErikTestClass {
 
     public void testKlass(){
 
-        System.out.println("Dynga");
+        System.out.println("Dynga prutt");
 
     }
 
