@@ -19,8 +19,10 @@ public class Home extends VerticalLayout {
 
   // message input field
   TextField messageInput = new TextField();
+  TextField userName = new TextField();
 
   Button sendMessage = new Button("send");
+  Button login = new Button("Log in");
 
   public Home() {
     initGUI();
@@ -33,11 +35,15 @@ public class Home extends VerticalLayout {
 
     messageInput.setPlaceholder("Input message");
 
+    HorizontalLayout loginLayout = new HorizontalLayout();
+    loginLayout.add(userName, login);
+
+    add(loginLayout);
     add(new H1("Logged in as: " + "username"));
     add(chatField);
-    HorizontalLayout horizontalLayout = new HorizontalLayout();
-    horizontalLayout.add(messageInput, sendMessage);
-    add(horizontalLayout);
+    HorizontalLayout messageLayout = new HorizontalLayout();
+    messageLayout.add(messageInput, sendMessage);
+    add(messageLayout);
   }
 
 
