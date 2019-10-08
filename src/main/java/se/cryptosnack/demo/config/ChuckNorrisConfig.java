@@ -10,11 +10,12 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 @EnableWebSocketMessageBroker
 public class ChuckNorrisConfig implements WebSocketMessageBrokerConfigurer {
 
+    @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker(WebSocketReferences.WEBSOCKET_MESSAGES);
         registry.setApplicationDestinationPrefixes(WebSocketReferences.WEBSOCKET_APP);
     }
-
+    @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint(WebSocketReferences.WEBSOCKET_ENDPOINT).withSockJS();
     }
