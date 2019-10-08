@@ -22,7 +22,7 @@ public class MessageController {
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages/created")
-    public Message requestSend(SentDTO sentMessage) {
+    public Message sendMessage(SentDTO sentMessage) {
         return messageService.saveMessage(sentMessage);
     }
 
