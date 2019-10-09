@@ -23,6 +23,7 @@ public class MessageController {
     @MessageMapping("/chat")
     @SendTo("/topic/messages/created")
     public Message sendMessage(SentDTO sentMessage) {
+        log.info("recieved: {}", sentMessage.getMessage());
         return messageService.save(sentMessage);
     }
 
