@@ -8,13 +8,13 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class ChuckNorrisConfig implements WebSocketMessageBrokerConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 //    public static final String WEBSOCKET_MESSAGES = "messages";
 //    public static final String WEBSOCKET_APP = "/app";
 //    public static final String WEBSOCKET_ENDPOINT = "/cryptosnack-websocket";
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker(WebSocketReferences.WEBSOCKET_MESSAGES);
+        registry.enableSimpleBroker(WebSocketReferences.WEBSOCKET_TOPIC);
         registry.setApplicationDestinationPrefixes(WebSocketReferences.WEBSOCKET_APP);
     }
     @Override
