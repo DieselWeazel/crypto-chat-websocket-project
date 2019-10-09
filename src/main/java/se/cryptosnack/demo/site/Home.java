@@ -10,9 +10,10 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import se.cryptosnack.demo.model.User;
 
+import java.util.concurrent.ExecutionException;
+
 @Route(value = "")
 public class Home extends VerticalLayout {
-
 
   User user;
 
@@ -27,11 +28,17 @@ public class Home extends VerticalLayout {
   Button login;
 
 
-  public Home() {
+  public Home() throws ExecutionException, InterruptedException {
     initGUI();
   }
 
-  public void initGUI() {
+  public void initGUI() throws ExecutionException, InterruptedException {
+
+//    StompSessionHandler sessionHandler = new CustomStompSessionHandler();
+//
+//    StompSession stompSession = stompClient.connect("ws://localhost:8080/cryptosnack-websocket",
+//            sessionHandler).get();
+
     login = new Button("Connect", event -> connectClick());
 
     chatField = new TextArea();

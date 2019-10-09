@@ -18,19 +18,16 @@ public class MessageController {
     private static final Logger log = LoggerFactory.getLogger(MessageController.class);
 
     @Autowired
-    private MessageService messageService;
+    private MessageService<Message, SentDTO> messageService;
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages/created")
     public Message sendMessage(SentDTO sentMessage) {
-        return messageService.saveMessage(sentMessage);
+        return messageService.save(sentMessage);
     }
 
     @SubscribeMapping("/messages/get")
     public List<Message> loadAllMessages() {
-        return messageService.loadChat();
+        return messageService.loadHistory();
     }
-
-
-
 }
