@@ -7,13 +7,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.model.User;
 import se.cryptosnack.demo.service.MessageService;
+import se.cryptosnack.demo.service.repositories.UserRepository;
 
 @SpringBootApplication
 public class DemoApplication {
 
   @Autowired
   private MessageService<Message, SentDTO> messageService;
+
+  @Autowired
+  private UserRepository userRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -25,6 +30,13 @@ public class DemoApplication {
       messageService.save(new SentDTO("Hello"));
       messageService.save(new SentDTO("Sup"));
       messageService.save(new SentDTO("Yo dude"));
+    };
+  }
+
+  @Bean
+  public CommandLineRunner addSomeUsers() {
+    return args -> {
+      userRepository.save(new User("BajsMacka"));
     };
   }
 
