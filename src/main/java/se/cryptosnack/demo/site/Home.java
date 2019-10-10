@@ -62,6 +62,9 @@ public class Home extends VerticalLayout {
     if (!userName.isEmpty()) {
       // connect with the username userName.getValue()
       // if connection is made, enable messageInput
+
+
+
     } else {
       Notification.show("You must enter a username to connect");
     }

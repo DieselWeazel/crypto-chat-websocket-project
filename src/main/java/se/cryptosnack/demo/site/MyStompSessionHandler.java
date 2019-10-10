@@ -14,15 +14,17 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
   @Override
   public void afterConnected(StompSession stompSession, StompHeaders stompHeaders) {
+    System.out.println("afterConnected INVOKED");
     logger.info("YAY New session connected: " + stompSession.getSessionId());
     stompSession.subscribe("/topic/messages", this);
     logger.info("YAY session: " + stompSession.getSessionId() + "subscribed to /topic/messages");
-    stompSession.send("/app/chat", getSampleMessage());
+    stompSession.send("/app", getSampleMessage());
   }
 
   @Override
   public void handleException(StompSession session, StompCommand command, StompHeaders headers,
       byte[] payload, Throwable exception) {
+    System.out.println("handleException invoked");
     logger.error("OH NO Got an exception", exception);
   }
 

@@ -1,5 +1,6 @@
 package se.cryptosnack.demo.site;
 
+import java.util.Scanner;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.StompSessionHandler;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
@@ -9,7 +10,7 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 public class StompClient {
 
-  private static String url = "ws://localhost:8080";
+  private static String url = "ws://172.20.35.64:8080/cryptosnack-websocket";
 
   public static void main(String[] args) {
     WebSocketClient webSocketClient = new StandardWebSocketClient();
@@ -20,6 +21,7 @@ public class StompClient {
     StompSessionHandler sessionHandler = new MyStompSessionHandler();
     stompClient.connect(url, sessionHandler);
 
+    new Scanner(System.in).nextLine();
   }
 
 }
