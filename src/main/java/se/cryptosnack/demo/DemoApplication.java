@@ -17,8 +17,8 @@ public class DemoApplication {
   @Autowired
   private MessageService<Message, SentDTO> messageService;
 
-  @Autowired
-  private UserRepository userRepository;
+//  @Autowired
+//  private UserRepository userRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
@@ -34,7 +34,7 @@ public class DemoApplication {
   }
 
   @Bean
-  public CommandLineRunner addSomeUsers() {
+  public CommandLineRunner addSomeUsers(UserRepository userRepository) {
     return args -> {
       userRepository.save(new User("BajsMacka"));
     };
