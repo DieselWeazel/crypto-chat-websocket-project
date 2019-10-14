@@ -1,7 +1,7 @@
 package se.cryptosnack.demo.config;
 
 /**
- * Holds all Property Values for {@link ChuckNorrisConfig}
+ * Holds all Property Values for {@link WebSocketConfig}
  */
 public class WebSocketReferences {
 
