@@ -14,7 +14,7 @@ public class AppController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String start(Model model) {
-        return PageViews.HOME;
+        return PageViews.CHAT;
     }
 
 
