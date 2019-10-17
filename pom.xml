@@ -111,27 +111,7 @@
     </dependency>
   </dependencies>
 
-<!--  TODO delete? also delete unused dependencies? -->
-<!--  <dependencyManagement>-->
-<!--    <dependencies>-->
-<!--      <dependency>-->
-<!--        <groupId>com.vaadin</groupId>-->
-<!--        <artifactId>vaadin-bom</artifactId>-->
-<!--        <version>${vaadin.version}</version>-->
-<!--        <type>pom</type>-->
-<!--        <scope>import</scope>-->
-<!--      </dependency>-->
-<!--    </dependencies>-->
-<!--  </dependencyManagement>-->
 
-<!--  <build>-->
-<!--    <plugins>-->
-<!--      <plugin>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--      </plugin>-->
-<!--    </plugins>-->
-<!--  </build>-->
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
