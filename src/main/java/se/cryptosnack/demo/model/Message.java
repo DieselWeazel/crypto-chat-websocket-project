@@ -14,6 +14,9 @@ public class Message {
     private String message;
     private LocalDate messageSent;
 
+    @ManyToOne
+    private User user;
+
     public Message(String message) {
         this.message = message;
         this.messageSent = LocalDate.now();

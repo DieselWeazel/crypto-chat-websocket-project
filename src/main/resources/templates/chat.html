@@ -1,0 +1,60 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CryptoSnack - Chatroom</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script th:src="@{socket.js}" type="module"></script>
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<noscript><h2>Yo start that JavaScript dude, else buzz off!</h2></noscript>
+
+<header></header>
+
+<!-- MAIN -->
+<div id ="main" class ="wrapper">
+
+    <!--  CHAT CONTAINER -->
+    <div id="chat-container">
+
+        <!--  CHAT-DIV -->
+        <div id="chat-div">
+
+            <!--  MESSAGE WINDOW, where all messages go -->
+            <div class="chat-box-div">
+                <table id="conversation" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Public Chat</th>
+                    </tr>
+                    </thead>
+                    <tbody id="chat">
+                    </tbody>
+                </table>
+            </div>
+            <!--  CHAT END -->
+
+            <!-- SEND MESSAGE WINDOW, inputform -->
+            <div class="chat-box-div">
+                <form id="message-submit-form">
+                    <label for="chatInput">Write your message bellow:</label>
+                    <input type="text" id="chatInput" placeholder="Message here please.">
+                    <button id="send" class="btn btn-default" type="submit">Send Message</button>
+                </form>
+            </div>
+            <!--  MESSAGE-FORM ENDS -->
+
+
+        </div>
+        <!--  CHAT-DIV END  -->
+    </div>
+<!--  CHATCONTAINER END  -->
+</div>
+</body>
+</html>
