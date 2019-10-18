@@ -1,0 +1,4 @@
+<thlogic>
+    <attr sel="header"
+          th:replace="~{fragments/header :: header}"/>
+</thlogic>
