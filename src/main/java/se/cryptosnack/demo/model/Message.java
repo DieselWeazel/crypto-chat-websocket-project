@@ -2,6 +2,7 @@ package se.cryptosnack.demo.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Message")
@@ -12,17 +13,20 @@ public class Message {
     @Column(name = "message_id")
     private Long id;
     private String message;
-    private LocalDate messageSent;
+    private LocalDateTime messageSent;
 
     @ManyToOne
     private User user;
 
-    public Message(String message) {
-        this.message = message;
-        this.messageSent = LocalDate.now();
+    public Message() {
     }
 
-    public Message(String message, LocalDate messageSent) {
+    public Message(String message) {
+        this.message = message;
+        this.messageSent = LocalDateTime.now();
+    }
+
+    public Message(String message, LocalDateTime messageSent) {
         this.message = message;
         this.messageSent = messageSent;
     }
@@ -43,11 +47,11 @@ public class Message {
         this.message = message;
     }
 
-    public LocalDate getMessageSent() {
+    public LocalDateTime getMessageSent() {
         return messageSent;
     }
 
-    public void setMessageSent(LocalDate messageSent) {
+    public void setMessageSent(LocalDateTime messageSent) {
         this.messageSent = messageSent;
     }
 }

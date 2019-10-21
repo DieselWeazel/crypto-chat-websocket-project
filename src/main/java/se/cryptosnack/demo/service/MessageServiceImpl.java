@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.cryptosnack.demo.controller.MessageWebsocketController;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
 import se.cryptosnack.demo.service.repositories.MessageRepository;
@@ -15,10 +16,13 @@ import java.util.stream.Collectors;
 @Service
 public class MessageServiceImpl implements MessageService<Message, SentDTO> {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageController.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageWebsocketController.class);
 
-    @Autowired
-    private MessageRepository messageRepository;
+    private final MessageRepository messageRepository;
+
+    public MessageServiceImpl(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+    }
 
     @Override
     public List<Message> loadHistory() {

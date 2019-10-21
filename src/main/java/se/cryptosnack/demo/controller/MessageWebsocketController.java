@@ -1,4 +1,4 @@
-package se.cryptosnack.demo.service;
+package se.cryptosnack.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,19 +7,22 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.util.HtmlUtils;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.service.MessageService;
 
 import java.util.List;
 
 @Controller
-public class MessageController {
+public class MessageWebsocketController {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageController.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageWebsocketController.class);
 
-    @Autowired
-    private MessageService<Message, SentDTO> messageService;
+    private final MessageService<Message, SentDTO> messageService;
+
+    public MessageWebsocketController(MessageService<Message, SentDTO> messageService) {
+        this.messageService = messageService;
+    }
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
