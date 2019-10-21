@@ -33,11 +33,11 @@ public class DemoApplication {
     };
   }
 
-  @Bean
-  public CommandLineRunner addSomeUsers(UserRepository userRepository) {
-    return args -> {
-      userRepository.save(new User("BajsMacka"));
-    };
-  }
+//  @Bean
+//  public CommandLineRunner addSomeUsers(UserRepository userRepository) {
+//    return args -> {
+//      userRepository.save(new User("BajsMacka"));
+//    };
+//  }
 
 }

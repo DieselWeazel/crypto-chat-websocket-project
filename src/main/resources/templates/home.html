@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>CryptoSnack - Sign In</title>
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<header></header>
+
+
+<div id="main" class="wrapper">
+    <h1>Welcome</h1>
+    <h3>
+        <a th:href="@{__${T(se.cryptosnack.demo.config.util.PageViews).CHAT}__}"
+           th:text="Chat"
+           href="chat.html">
+            Click to Enter
+        </a>
+    </h3>
+</div>
+</body>
+</html>

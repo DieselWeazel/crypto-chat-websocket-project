@@ -62,3 +62,14 @@ header {
     padding: 2em 3em;
     width: 100%;
 }
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}

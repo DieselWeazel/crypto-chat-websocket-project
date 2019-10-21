@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
  * you want additional fixes. Basically what this does it enables us to implement
  * ThymeLeafs logic, outside of the html files that Thymeleaf renders.
  *
- * So index.html + index.th.xml are both read simultaneously. Pretty straight forward right?
+ * So home.html + index.th.xml are both read simultaneously. Pretty straight forward right?
  *
  * Else, you wouild have to add all the TH:replace/th:object etc etc etc
  * directly into the file you want it in, now the HTML file works WITHOUT thymeleaf
