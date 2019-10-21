@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-
-    <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto:100,300i,400i,500,700&display=swap" rel="stylesheet">
 <title>CryptoSnack Login</title>
 
@@ -12,18 +12,20 @@
 <body>
 
 <div class="wrapper">
-<header>
-
+<header></header>
+<div>
     <h1>Welcome to Crypto Snack</h1>
     <h2>Please enter name and password to log on to the service</h2>
-
-</header>
-
+</div>
 <div class="login-box">
 
-    <input id="user" type="text" placeholder="Enter name here..">
-    <input id="password" type="password" placeholder="Enter password here..">
-    <button>Login</button>
+    <form th:action="@{/login}" method="post">
+        <label for="user">Username:</label>
+        <input id="user" name="username" type="text" autofocus="autofocus" placeholder="Enter name here..">
+        <label for="password">Username:</label>
+        <input id="password" name="password" type="password" placeholder="Enter password here..">
+        <input id="login-submit" name="login-submit" type="submit" value="submit" />
+    </form>
 
 </div>
 </div>
