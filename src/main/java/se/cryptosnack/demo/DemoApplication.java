@@ -18,7 +18,7 @@ public class DemoApplication {
   private MessageService<Message, SentDTO> messageService;
 
 //  @Autowired
-//  private UserRepository userRepository;
+////  private UserRepository userRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(DemoApplication.class, args);
