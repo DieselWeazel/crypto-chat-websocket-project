@@ -1,4 +1,4 @@
-package se.cryptosnack.demo.model;
+package se.cryptosnack.demo.model.dto;
 
 /**
  * Data Transfer Class, takes the recieved message and turns it into a Message via Controller.

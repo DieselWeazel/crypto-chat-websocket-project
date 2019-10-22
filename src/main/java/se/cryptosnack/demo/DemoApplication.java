@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import se.cryptosnack.demo.model.Message;
-import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.model.dto.SentDTO;
 import se.cryptosnack.demo.model.User;
 import se.cryptosnack.demo.service.EntityService;
 import se.cryptosnack.demo.service.repositories.UserRepository;

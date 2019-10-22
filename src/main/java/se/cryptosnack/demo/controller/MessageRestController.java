@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import se.cryptosnack.demo.model.Message;
-import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.model.dto.SentDTO;
 import se.cryptosnack.demo.service.EntityService;
 
 import java.util.List;

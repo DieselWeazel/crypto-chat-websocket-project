@@ -3,12 +3,10 @@ package se.cryptosnack.demo.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import se.cryptosnack.demo.controller.MessageWebsocketController;
 import se.cryptosnack.demo.model.Message;
-import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.model.dto.SentDTO;
 import se.cryptosnack.demo.service.repositories.MessageRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 

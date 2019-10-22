@@ -4,9 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import se.cryptosnack.demo.controller.MessageRestController;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.model.UserDTO;
+import se.cryptosnack.demo.model.dto.UserDTO;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
 import java.util.List;

@@ -3,13 +3,11 @@ package se.cryptosnack.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.model.UserDTO;
+import se.cryptosnack.demo.model.dto.UserDTO;
 import se.cryptosnack.demo.service.EntityService;
-import se.cryptosnack.demo.service.MessageServiceImpl;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
 /**

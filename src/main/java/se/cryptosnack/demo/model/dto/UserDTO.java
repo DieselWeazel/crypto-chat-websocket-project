@@ -1,4 +1,4 @@
-package se.cryptosnack.demo.model;
+package se.cryptosnack.demo.model.dto;
 
 public class UserDTO {
 

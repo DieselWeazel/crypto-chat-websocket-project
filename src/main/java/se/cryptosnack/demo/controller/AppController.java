@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import se.cryptosnack.demo.config.util.PageViews;
 import se.cryptosnack.demo.model.Message;
-import se.cryptosnack.demo.model.SentDTO;
+import se.cryptosnack.demo.model.dto.SentDTO;
 import se.cryptosnack.demo.service.EntityService;
 
 @Controller
