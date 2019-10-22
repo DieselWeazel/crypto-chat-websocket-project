@@ -21,11 +21,11 @@ public class AppController {
 
     private static final Logger log = LoggerFactory.getLogger(AppController.class);
 
-    private final EntityService<Message, SentDTO> entityService;
+    private final EntityService<SentDTO> entityService;
     private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public AppController(EntityService<Message, SentDTO> entityService, CustomUserDetailsService customUserDetailsService) {
+    public AppController(EntityService<SentDTO> entityService, CustomUserDetailsService customUserDetailsService) {
         this.entityService = entityService;
         this.customUserDetailsService = customUserDetailsService;
     }

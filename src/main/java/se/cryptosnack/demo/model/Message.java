@@ -15,7 +15,7 @@ public class Message {
     private String message;
     private LocalDateTime messageSent;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Message() {

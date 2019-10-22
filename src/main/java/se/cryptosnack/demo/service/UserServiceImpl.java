@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.User;
 import se.cryptosnack.demo.model.dto.UserDTO;
 import se.cryptosnack.demo.service.repositories.UserRepository;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements EntityService<User, UserDTO> {
+public class UserServiceImpl implements EntityService<UserDTO> {
 
     private static final Logger log = LoggerFactory.getLogger(EntityService.class);
 
@@ -25,9 +26,9 @@ public class UserServiceImpl implements EntityService<User, UserDTO> {
     }
 
     @Override
-    public List<User> loadAll() {
-        return userRepository.findAll().stream().map(user -> new User(user.getUsername(), user.getPassword())).collect(Collectors.toList());
-
+    public List<UserDTO> loadAll() {
+        return userRepository.findAll().stream().map(user -> new UserDTO(user.getUsername(), user.getPassword()
+        , user.getMessageList().stream().map(message -> passwordEncoder.encode(message.getMessage())).collect(Collectors.toList()))).collect(Collectors.toList());
     }
 
     @Override

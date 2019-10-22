@@ -6,7 +6,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.dto.SentDTO;
 import se.cryptosnack.demo.service.EntityService;
 
@@ -17,9 +16,9 @@ public class MessageWebsocketController {
 
     private static final Logger log = LoggerFactory.getLogger(MessageWebsocketController.class);
 
-    private final EntityService<Message, SentDTO> entityService;
+    private final EntityService<SentDTO> entityService;
 
-    public MessageWebsocketController(EntityService<Message, SentDTO> entityService) {
+    public MessageWebsocketController(EntityService<SentDTO> entityService) {
         this.entityService = entityService;
     }
 
@@ -31,7 +30,7 @@ public class MessageWebsocketController {
     }
 
     @SubscribeMapping("/messages")
-    public List<Message> loadAllMessages() {
+    public List<SentDTO> loadAllMessages() {
         log.info("loadAllMessages() has been called");
         return entityService.loadAll();
     }

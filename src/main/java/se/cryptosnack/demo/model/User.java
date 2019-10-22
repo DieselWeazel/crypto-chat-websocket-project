@@ -3,17 +3,15 @@ package se.cryptosnack.demo.model;
 import se.cryptosnack.demo.config.util.AppReferences;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name="User")
 public class User {
 
-
-//  @GeneratedValue(strategy = GenerationType.IDENTITY)
-//  @Column(name = "user_id")
-//  private Long id;
 
   @Id
   @Column(unique = true)
@@ -23,8 +21,8 @@ public class User {
 
   private String role;
 
-  @OneToMany(fetch = FetchType.EAGER)
-  private Set<Message> messageList = new HashSet<>();
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  private List<Message> messageList = new ArrayList<>();
 
   public User() {
   }
@@ -35,11 +33,12 @@ public class User {
     role = AppReferences.USER_ROLE;
   }
 
-//  public User(String userName, String password, String role) {
-//    this.userName = userName;
-//    this.password = password;
-//    this.role = role;
-//  }
+  public User(String username, String password, String role, List<Message> messageList) {
+    this.username = username;
+    this.password = password;
+    this.role = role;
+    this.messageList = messageList;
+  }
 
   public String getUsername() {
     return username;
@@ -57,7 +56,7 @@ public class User {
     this.password = password;
   }
 
-  public Set<Message> getMessageList() {
+  public List<Message> getMessageList() {
     return messageList;
   }
 
@@ -69,7 +68,7 @@ public class User {
     this.role = role;
   }
 
-  public void setMessageList(Set<Message> messageList) {
+  public void setMessageList(List<Message> messageList) {
     this.messageList = messageList;
   }
 

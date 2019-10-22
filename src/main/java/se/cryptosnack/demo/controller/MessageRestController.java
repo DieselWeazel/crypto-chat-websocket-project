@@ -23,14 +23,14 @@ public class MessageRestController {
 
     private static final Logger log = LoggerFactory.getLogger(MessageRestController.class);
 
-    private final EntityService<Message, SentDTO> entityService;
+    private final EntityService<SentDTO> entityService;
 
-    public MessageRestController(EntityService<Message, SentDTO> entityService) {
+    public MessageRestController(EntityService<SentDTO> entityService) {
         this.entityService = entityService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Message> findMessages() {
+    public List<SentDTO> findMessages() {
         return entityService.loadAll();
     }
 

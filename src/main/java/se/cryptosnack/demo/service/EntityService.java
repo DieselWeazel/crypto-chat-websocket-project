@@ -1,8 +1,8 @@
 package se.cryptosnack.demo.service;
 import java.util.List;
-public interface EntityService<T, E> {
+public interface EntityService<E> {
 
-    List<T> loadAll();
+    List<E> loadAll();
     E save(E e);
 
 }
