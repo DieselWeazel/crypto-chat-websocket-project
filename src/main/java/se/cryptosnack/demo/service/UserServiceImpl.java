@@ -31,9 +31,10 @@ public class UserServiceImpl implements EntityService<User, UserDTO> {
     }
 
     @Override
-    public User save(UserDTO userDTO) {
+    public UserDTO save(UserDTO userDTO) {
         log.info("Saving new User = {}", new User(userDTO.getUsername(), passwordEncoder.encode(userDTO.getPassword())));
-        return userRepository.save(new User(userDTO.getUsername(), passwordEncoder.encode(userDTO.getPassword())));
+        userRepository.save(new User(userDTO.getUsername(), passwordEncoder.encode(userDTO.getPassword())));
+        return userDTO;
     }
 
 }

@@ -59,9 +59,16 @@ header {
     background-color: teal;
     /*position: absolute;*/
     /*z-index: 1;*/
-    padding: 2em 3em;
+    padding: 0.5em 3em;
     width: 100%;
 }
+
+/*GROUPS OF ELEMENTS*/
+#message-submit-form {
+    position: fixed;
+    bottom: 2.5em;
+}
+
 
 
 .wrapper{
@@ -73,3 +80,66 @@ header {
     font-family: 'Lato', sans-serif;
     text-align: center;
 }
+
+/*Creates a rotated DIV, CSS Solution. (Not my idea, just very cool solution to the problem)*/
+/*https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up*/
+#div-scroll {
+    background-color: lightblue;
+    height: 40em;
+    width: 70em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transform: rotate(180deg);
+    /*direction:rtl;*/
+    text-align:right;
+}
+#conversation {
+    text-align: left;
+    width: 70em;
+}
+/*table, td, th {*/
+/*    border: 1px solid black;*/
+/*}*/
+/*INPUT ELEMENTS & Table */
+#chatInput {
+    height: 4em;
+    width: 40em;
+}
+
+#send {
+    height: 4em;
+    width: 10em;
+}
+/*TABLE*/
+
+td {
+    font-size: 1.5em;
+}
+tr {
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+
+.td-date {
+    width: 10em;
+    font-style: italic;
+    color: darkgrey;
+}
+
+.td-user {
+    width: 5em;
+    color: darkgrey;
+}
+
+.td-message {
+    width: 20em;
+}
+/*TEXT*/
+h2 {
+    font-size: 2.5em;
+}
+h3  {
+    font-size: 1.2em;
+}
+
+

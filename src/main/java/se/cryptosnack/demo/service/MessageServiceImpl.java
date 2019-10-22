@@ -17,9 +17,12 @@ public class MessageServiceImpl implements EntityService<Message, SentDTO> {
 
     private final MessageRepository messageRepository;
     private final MessageOwnerService messageOwnerService;
-    public MessageServiceImpl(MessageRepository messageRepository, MessageOwnerService messageOwnerService) {
+    private final DateFormatService dateFormatService;
+
+    public MessageServiceImpl(MessageRepository messageRepository, MessageOwnerService messageOwnerService, DateFormatService dateFormatService) {
         this.messageRepository = messageRepository;
         this.messageOwnerService = messageOwnerService;
+        this.dateFormatService = dateFormatService;
     }
 
     @Override
@@ -30,16 +33,11 @@ public class MessageServiceImpl implements EntityService<Message, SentDTO> {
     }
 
     @Override
-    public Message save(SentDTO sentDTO) {
+    public SentDTO save(SentDTO sentDTO) {
         log.info("Saving message = {}", sentDTO.toString());
-//        User user = (User) customUserDetailsService.getUser();
-//        log.info("SentDTO = {}", sentDTO.getSentFrom());
-//        log.info("Sent by user = {}", user.getUsername());
-//        user = customUserDetailsService.getUser();
-//        Message message = new Message(sentDTO.getMessage());
-//        message.setUser(user);
-
-
-        return messageRepository.save(new Message(sentDTO.getMessage(), messageOwnerService.getSentFromUser(sentDTO.getSentFrom())));
+        Message incomingMessage = new Message(sentDTO.getMessage(), messageOwnerService.getSentFromUser(sentDTO.getSentFrom()));
+        sentDTO.setTimeSent(dateFormatService.getDateTimeSent(incomingMessage.getMessageSent()));
+        messageRepository.save(incomingMessage);
+        return sentDTO;
     }
 }

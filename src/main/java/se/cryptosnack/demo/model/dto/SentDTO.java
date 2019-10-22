@@ -7,6 +7,7 @@ public class SentDTO {
 
     private String message;
     private String sentFrom;
+    private String timeSent;
 
     public SentDTO() {
     }
@@ -14,6 +15,12 @@ public class SentDTO {
     public SentDTO(String message, String sentFrom) {
         this.message = message;
         this.sentFrom = sentFrom;
+    }
+
+    public SentDTO(String message, String sentFrom, String timeSent) {
+        this.message = message;
+        this.sentFrom = sentFrom;
+        this.timeSent = timeSent;
     }
 
     public String getMessage() {
@@ -32,11 +39,20 @@ public class SentDTO {
         this.sentFrom = sentFrom;
     }
 
+    public String getTimeSent() {
+        return timeSent;
+    }
+
+    public void setTimeSent(String timeSent) {
+        this.timeSent = timeSent;
+    }
+
     @Override
     public String toString() {
         return "SentDTO{" +
                 "message='" + message + '\'' +
                 ", sentFrom='" + sentFrom + '\'' +
+                ", timeSent='" + timeSent + '\'' +
                 '}';
     }
 }
