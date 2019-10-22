@@ -19,14 +19,14 @@ public class DemoApplication {
     SpringApplication.run(DemoApplication.class, args);
   }
 
-  @Bean
-  public CommandLineRunner addSomeMessages(EntityService<Message, SentDTO> entityService) {
-    return args -> {
-      entityService.save(new SentDTO("Hello"));
-      entityService.save(new SentDTO("Sup"));
-      entityService.save(new SentDTO("Yo dude"));
-    };
-  }
+//  @Bean
+//  public CommandLineRunner addSomeMessages(EntityService<Message, SentDTO> entityService) {
+//    return args -> {
+//      entityService.save(new SentDTO("Hello"));
+//      entityService.save(new SentDTO("Sup"));
+//      entityService.save(new SentDTO("Yo dude"));
+//    };
+//  }
 
   @Bean
   public CommandLineRunner addSomeUsers(UserRepository userRepository, PasswordEncoder passwordEncoder) {

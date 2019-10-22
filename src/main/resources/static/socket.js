@@ -12,13 +12,13 @@ function connect() {
 }
 
 function showNewMessage(message) {
-    $("#chat").append("<tr><td>" + JSON.parse(message.body).message + "</td></tr>");
-    // + "<tr><td>" + +"</td></tr>");
+    $("#chat").append("<tr><td>" + JSON.parse(message.body).sentFrom +"</td>" +
+        "<td>" + JSON.parse(message.body).message + "</td></tr>");
 }
 
 function sendMessage() {
     // console.log("sendName(): " + JSON.stringify({'message': $("#chatInput").val()}));
-    stomp.send("/app/chat", {}, JSON.stringify({'message': $("#chatInput").val()}));
+    stomp.send("/app/chat", {}, JSON.stringify({'message': $("#chatInput").val(), 'sentFrom' : $("#user_h3").text()}));
 }
 
 $(function () {

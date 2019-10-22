@@ -23,7 +23,7 @@ public class User {
 
   private String role;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  @OneToMany(fetch = FetchType.EAGER)
   private Set<Message> messageList = new HashSet<>();
 
   public User() {

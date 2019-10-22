@@ -16,9 +16,10 @@ public class MessageServiceImpl implements EntityService<Message, SentDTO> {
     private static final Logger log = LoggerFactory.getLogger(EntityService.class);
 
     private final MessageRepository messageRepository;
-
-    public MessageServiceImpl(MessageRepository messageRepository) {
+    private final MessageOwnerService messageOwnerService;
+    public MessageServiceImpl(MessageRepository messageRepository, MessageOwnerService messageOwnerService) {
         this.messageRepository = messageRepository;
+        this.messageOwnerService = messageOwnerService;
     }
 
     @Override
@@ -30,7 +31,15 @@ public class MessageServiceImpl implements EntityService<Message, SentDTO> {
 
     @Override
     public Message save(SentDTO sentDTO) {
-        log.info("Saving message = {}", sentDTO.getMessage());
-        return messageRepository.save(new Message(sentDTO.getMessage()));
+        log.info("Saving message = {}", sentDTO.toString());
+//        User user = (User) customUserDetailsService.getUser();
+//        log.info("SentDTO = {}", sentDTO.getSentFrom());
+//        log.info("Sent by user = {}", user.getUsername());
+//        user = customUserDetailsService.getUser();
+//        Message message = new Message(sentDTO.getMessage());
+//        message.setUser(user);
+
+
+        return messageRepository.save(new Message(sentDTO.getMessage(), messageOwnerService.getSentFromUser(sentDTO.getSentFrom())));
     }
 }

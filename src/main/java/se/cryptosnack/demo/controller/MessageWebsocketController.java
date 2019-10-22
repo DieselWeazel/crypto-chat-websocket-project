@@ -25,10 +25,11 @@ public class MessageWebsocketController {
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
-    public Message sendMessage(SentDTO sentMessage) {
+    public SentDTO sendMessage(SentDTO sentMessage) {
         log.info("recieved: {}", sentMessage.getMessage());
 //        return new Message("Hello " + HtmlUtils.htmlEscape(sentMessage.getMessage()) + ".");
-        return entityService.save(sentMessage);
+        entityService.save(sentMessage);
+        return sentMessage;
     }
 
     @SubscribeMapping("/messages")
