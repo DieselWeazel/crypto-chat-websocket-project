@@ -1,6 +1,7 @@
 package se.cryptosnack.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,24 +15,21 @@ import se.cryptosnack.demo.service.repositories.UserRepository;
 import java.util.Collection;
 import java.util.Collections;
 
+@Qualifier("customUserDetailsService")
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService extends User implements UserDetailsService {
 
     private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-//
-//    public CustomUserDetailsService(UserRepository userRepository){
-//        this.userRepository = userRepository;
-//    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(userName);
         if (null == user) {
-            throw new UsernameNotFoundException("No user found // Create Something else here!");
+            throw new UsernameNotFoundException("No user found");
         } else {
             return new org.springframework.security.core.userdetails.User(
                     user.getUsername(),

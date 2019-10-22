@@ -26,25 +26,25 @@
 
             <!--  MESSAGE WINDOW, where all messages go -->
             <div class="chat-box-div">
-                <table id="conversation" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Public Chat</th>
-                    </tr>
-
-                    </thead>
-                    <tbody id="chat">
-                    </tbody>
-                </table>
+                <h2>Public Chat</h2>
+                <!--  A rotated DIV, to give the effect of most recent messages in the bottom -->
+                <div id="div-scroll">
+                    <table id="conversation">
+                        <tbody id="chat">
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!--  CHAT END -->
 
             <!-- SEND MESSAGE WINDOW, inputform -->
             <div class="chat-box-div">
+                <!-- CHAT FORM, Message Sender + UserName ID. -->
                 <form id="message-submit-form">
-                    <label for="chatInput">Write your message bellow:</label>
-                    <input type="text" id="chatInput" placeholder="Message here please.">
-                    <button id="send" class="btn btn-default" type="submit">Send Message</button>
+                    <h3 style="float: left">Logged in as: </h3>
+                    <h3 th:text="${__${T(se.cryptosnack.demo.config.util.AppReferences).CURRENT_USER}__}" id="user_h3">(User Should be Displayed Here, text will be replaced)</h3>
+                    <label for="chatInput"></label><input type="text" id="chatInput" placeholder="Message here please.">
+                    <button id="send" class="default-btn" type="submit">Send Message</button>
                 </form>
             </div>
             <!--  MESSAGE-FORM ENDS -->

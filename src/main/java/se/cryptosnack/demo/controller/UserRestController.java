@@ -1,41 +1,68 @@
 package se.cryptosnack.demo.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.service.CustomUserDetailsService;
+import se.cryptosnack.demo.model.dto.UserDTO;
+import se.cryptosnack.demo.service.EntityService;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
-import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
- * RestController for Users. Example:
- * http://localhost:8080/api/user/?username=jonte
+ * RestController for Users. Finding a specific user by name:
+ * http://localhost:8080/api/user?username=jonte
+ * (Throws exception if not found)
+ *
+ * REQUIRES POSTMAN/or other equivalent software.
+ * Adding specific new Users:
+ * http://localhost:8080/api/user?username=newuser&password=hisspassword
+ *                                param1,          param2
  * (Loads user jonte and shows him + his encrypted password)
  */
 @RestController
-@RequestMapping("api/user/")
+@RequestMapping("api/user")
 public class UserRestController {
 
-    private final UserRepository userRepository;
+    private static final Logger log = LoggerFactory.getLogger(UserRestController.class);
 
-    public UserRestController(UserRepository userRepository) {
+    private final UserRepository userRepository;
+    private final EntityService<UserDTO> entityService;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserRestController(UserRepository userRepository, EntityService<UserDTO> entityService, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.entityService = entityService;
+        this.passwordEncoder = passwordEncoder;
     }
 
+
     @RequestMapping(method = RequestMethod.GET)
-    public User findByUsername(@RequestParam("username") String username) {
+    public UserDTO findByUsername(@RequestParam("username") String username) {
         User user = userRepository.findByUsername(username);
+        log.info("Message 1 in messagelist = {}", userRepository.findByUsername(username).getMessageList().size());
         if (user == null) {
             throw new UsernameNotFoundException("User doesn't exist here");
         } else {
-            return new User(user.getUsername(), user.getPassword());
+            return new UserDTO(user.getUsername(), user.getPassword(), user.getMessageList().stream().map(message -> passwordEncoder.encode(message.getMessage())).collect(Collectors.toList()));
         }
+    }
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<UserDTO> findAllUsers() {
+        return entityService.loadAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public UserDTO create(@RequestParam("username") String username,
+                          @RequestParam("password") String password){
+        UserDTO userDTO = new UserDTO(username, password);
+        log.info("Recieved UserDTO = {}", userDTO.toString());
+        entityService.save(userDTO);
+        return new UserDTO(userDTO.getUsername(), userDTO.getPassword());
     }
 }

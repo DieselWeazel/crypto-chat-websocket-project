@@ -15,14 +15,20 @@ public class Message {
     private String message;
     private LocalDateTime messageSent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     public Message() {
     }
 
-    public Message(String message) {
+//    public Message(String message) {
+//        this.message = message;
+//        this.messageSent = LocalDateTime.now();
+//    }
+
+    public Message(String message, User user) {
         this.message = message;
+        this.user = user;
         this.messageSent = LocalDateTime.now();
     }
 
@@ -53,5 +59,18 @@ public class Message {
 
     public void setMessageSent(LocalDateTime messageSent) {
         this.messageSent = messageSent;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return  user.getUsername() + ": " + messageSent + ": " + message;
     }
 }

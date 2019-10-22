@@ -43,6 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll().defaultSuccessUrl("/chat");
+
+        http.headers().frameOptions().sameOrigin();
 //                .anyRequest().authenticated();
     }
 
@@ -58,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/css/**", "/img/**", "/static/**");
+                .antMatchers("/css/**", "/img/**", "/static/**"
+                ,"/api/**", "/user/**", "api/user/**", "h2-console/**");
     }
 }

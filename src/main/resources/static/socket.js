@@ -12,13 +12,15 @@ function connect() {
 }
 
 function showNewMessage(message) {
-    $("#chat").append("<tr><td>" + JSON.parse(message.body).message + "</td></tr>");
-    // + "<tr><td>" + +"</td></tr>");
+    $("<tr><td class='td-date'>" + JSON.parse(message.body).timeSent +"</td>" +
+        "<td class='td-user'>" + JSON.parse(message.body).sentFrom +":</td>" +
+        "<td class='td-message'>" + JSON.parse(message.body).message + "</td></tr>").prependTo($("#chat"));
 }
 
 function sendMessage() {
     // console.log("sendName(): " + JSON.stringify({'message': $("#chatInput").val()}));
-    stomp.send("/app/chat", {}, JSON.stringify({'message': $("#chatInput").val()}));
+    stomp.send("/app/chat", {}, JSON.stringify({'message': $('#chatInput').val(), 'sentFrom' : $('#user_h3').text()}));
+    $('#chatInput').val('');
 }
 
 $(function () {
