@@ -19,6 +19,10 @@ import java.util.stream.Collectors;
  * http://localhost:8080/api/user?username=jonte
  * (Throws exception if not found)
  *
+ * Finding All users within repo:
+ * http://localhost:8080/api/user/all
+ * (Includes their messages)
+ *
  * REQUIRES POSTMAN/or other equivalent software.
  * Adding specific new Users:
  * http://localhost:8080/api/user?username=newuser&password=hisspassword
