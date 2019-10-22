@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class MessageServiceImpl implements EntityService<Message, SentDTO> {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageWebsocketController.class);
+    private static final Logger log = LoggerFactory.getLogger(EntityService.class);
 
     private final MessageRepository messageRepository;
 
@@ -31,7 +31,6 @@ public class MessageServiceImpl implements EntityService<Message, SentDTO> {
     }
 
     @Override
-    @Transactional
     public Message save(SentDTO sentDTO) {
         log.info("Saving message = {}", sentDTO.getMessage());
         return messageRepository.save(new Message(sentDTO.getMessage()));

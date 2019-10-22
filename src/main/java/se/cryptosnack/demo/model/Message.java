@@ -54,4 +54,6 @@ public class Message {
     public void setMessageSent(LocalDateTime messageSent) {
         this.messageSent = messageSent;
     }
+
+
 }

@@ -1,4 +1,6 @@
-package se.cryptosnack.demo.config;
+package se.cryptosnack.demo.config.util;
+
+import se.cryptosnack.demo.config.WebSocketConfig;
 
 /**
  * Holds all Property Values for {@link WebSocketConfig}

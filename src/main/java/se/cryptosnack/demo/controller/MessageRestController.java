@@ -1,5 +1,8 @@
 package se.cryptosnack.demo.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +21,8 @@ import java.util.List;
 @RequestMapping("api/message")
 public class MessageRestController {
 
+    private static final Logger log = LoggerFactory.getLogger(MessageRestController.class);
+
     private final EntityService<Message, SentDTO> entityService;
 
     public MessageRestController(EntityService<Message, SentDTO> entityService) {
@@ -27,5 +32,11 @@ public class MessageRestController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Message> findMessages() {
         return entityService.loadAll();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public SentDTO create(@RequestBody SentDTO sentDTO) {
+        entityService.save(sentDTO);
+        return sentDTO;
     }
 }

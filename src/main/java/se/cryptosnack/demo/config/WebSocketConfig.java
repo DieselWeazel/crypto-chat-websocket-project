@@ -5,6 +5,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import se.cryptosnack.demo.config.util.WebSocketReferences;
 
 @Configuration
 @EnableWebSocketMessageBroker

@@ -5,6 +5,9 @@ public class UserDTO {
     private String username;
     private String password;
 
+    public UserDTO() {
+    }
+
     public UserDTO(String username, String password) {
         this.username = username;
         this.password = password;
@@ -24,5 +27,13 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String
+    toString() {
+        return  "[username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ']';
     }
 }

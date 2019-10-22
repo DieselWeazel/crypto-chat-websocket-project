@@ -72,4 +72,12 @@ public class User {
   public void setMessageList(Set<Message> messageList) {
     this.messageList = messageList;
   }
+
+  @Override
+  public String toString() {
+    return "[username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", role='" + role + '\'' +
+            ']';
+  }
 }
