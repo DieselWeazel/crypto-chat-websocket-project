@@ -1,18 +1,12 @@
 package se.cryptosnack.demo.controller;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.service.CustomUserDetailsService;
+import se.cryptosnack.demo.model.UserDTO;
+import se.cryptosnack.demo.service.EntityService;
 import se.cryptosnack.demo.service.repositories.UserRepository;
-
-import java.util.Collections;
 
 /**
  * RestController for Users. Example:
@@ -24,10 +18,13 @@ import java.util.Collections;
 public class UserRestController {
 
     private final UserRepository userRepository;
+    private final EntityService<User, UserDTO> entityService;
 
-    public UserRestController(UserRepository userRepository) {
+    public UserRestController(UserRepository userRepository, EntityService<User, UserDTO> entityService) {
         this.userRepository = userRepository;
+        this.entityService = entityService;
     }
+
 
     @RequestMapping(method = RequestMethod.GET)
     public User findByUsername(@RequestParam("username") String username) {
@@ -37,5 +34,10 @@ public class UserRestController {
         } else {
             return new User(user.getUsername(), user.getPassword());
         }
+    }
+
+    @RequestMapping(value="/post", method = RequestMethod.POST)
+    public User create(@RequestBody UserDTO userDTO){
+        return entityService.save(userDTO);
     }
 }

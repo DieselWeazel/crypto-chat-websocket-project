@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import se.cryptosnack.demo.config.util.PageViews;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
-import se.cryptosnack.demo.service.MessageService;
+import se.cryptosnack.demo.service.EntityService;
 
 @Controller
 public class AppController {
 
 
-    private MessageService<Message, SentDTO> messageService;
+    private EntityService<Message, SentDTO> entityService;
 
     @Autowired
-    public AppController(MessageService<Message, SentDTO> messageService) {
-        this.messageService = messageService;
+    public AppController(EntityService<Message, SentDTO> entityService) {
+        this.entityService = entityService;
     }
 
     @GetMapping(PageViews.INDEX)

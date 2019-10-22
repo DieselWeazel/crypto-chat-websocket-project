@@ -1,14 +1,11 @@
 package se.cryptosnack.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
-import se.cryptosnack.demo.service.MessageService;
+import se.cryptosnack.demo.service.EntityService;
 
 import java.util.List;
 
@@ -21,14 +18,14 @@ import java.util.List;
 @RequestMapping("api/message")
 public class MessageRestController {
 
-    private final MessageService<Message, SentDTO> messageService;
+    private final EntityService<Message, SentDTO> entityService;
 
-    public MessageRestController(MessageService<Message, SentDTO> messageService) {
-        this.messageService = messageService;
+    public MessageRestController(EntityService<Message, SentDTO> entityService) {
+        this.entityService = entityService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Message> findMessages() {
-        return messageService.loadHistory();
+        return entityService.loadAll();
     }
 }

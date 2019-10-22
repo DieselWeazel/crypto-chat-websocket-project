@@ -1,16 +1,14 @@
 package se.cryptosnack.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.service.MessageService;
+import se.cryptosnack.demo.service.EntityService;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
 @SpringBootApplication
@@ -22,11 +20,11 @@ public class DemoApplication {
   }
 
   @Bean
-  public CommandLineRunner addSomeMessages(MessageService<Message, SentDTO> messageService) {
+  public CommandLineRunner addSomeMessages(EntityService<Message, SentDTO> entityService) {
     return args -> {
-      messageService.save(new SentDTO("Hello"));
-      messageService.save(new SentDTO("Sup"));
-      messageService.save(new SentDTO("Yo dude"));
+      entityService.save(new SentDTO("Hello"));
+      entityService.save(new SentDTO("Sup"));
+      entityService.save(new SentDTO("Yo dude"));
     };
   }
 
