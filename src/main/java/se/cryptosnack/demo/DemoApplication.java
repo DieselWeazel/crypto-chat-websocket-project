@@ -5,10 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import se.cryptosnack.demo.model.Message;
-import se.cryptosnack.demo.model.SentDTO;
 import se.cryptosnack.demo.model.User;
-import se.cryptosnack.demo.service.MessageService;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
 @SpringBootApplication
@@ -30,14 +27,14 @@ public class DemoApplication {
     };
   }
 
-  @Bean
-  public CommandLineRunner addSomeMessages(MessageService<Message, SentDTO> messageService,
-      UserRepository userRepository) {
-    return args -> {
-      messageService.save(new SentDTO("Hello", userRepository.findByUsername("august")));
-      messageService.save(new SentDTO("Sup", userRepository.findByUsername("jonte")));
-      messageService.save(new SentDTO("Yo dude", userRepository.findByUsername("erik")));
-    };
-  }
+  // @Bean
+  // public CommandLineRunner addSomeMessages(MessageService<Message, SentDTO> messageService,
+  // UserRepository userRepository) {
+  // return args -> {
+  // messageService.save(new SentDTO("Hello", userRepository.findByUsername("august")));
+  // messageService.save(new SentDTO("Sup", userRepository.findByUsername("jonte")));
+  // messageService.save(new SentDTO("Yo dude", userRepository.findByUsername("erik")));
+  // };
+  // }
 
 }
