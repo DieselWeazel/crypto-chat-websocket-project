@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import se.cryptosnack.demo.config.util.AppReferences;
 import se.cryptosnack.demo.config.util.PageViews;
 import se.cryptosnack.demo.model.Message;

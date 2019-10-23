@@ -3,8 +3,7 @@ var stomp = null;
 function connect() {
     var socket = new SockJS('/cryptosnack-websocket');
     stomp = Stomp.over(socket);
-    stomp.connect({}, function(frame){
-        // setConnected(true);
+    stomp.connect({}, function(){
         stomp.subscribe('/topic/messages', function(data) {
             showNewMessage(data);
         });

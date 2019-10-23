@@ -32,9 +32,9 @@ public class CustomUserDetailsService extends User implements UserDetailsService
             throw new UsernameNotFoundException("No user found");
         } else {
             return new org.springframework.security.core.userdetails.User(
-                    user.getUsername(),
-                    user.getPassword(),
-                    Collections.singletonList(new SimpleGrantedAuthority(user.getRole())));
+                user.getUsername(),
+                user.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority(user.getRole())));
         }
     }
 

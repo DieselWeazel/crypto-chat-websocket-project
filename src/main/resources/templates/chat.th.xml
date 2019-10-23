@@ -1,4 +1,6 @@
 <thlogic>
     <attr sel="header"
           th:replace="~{fragments/header :: header}"/>
+    <attr sel="#user_h3"
+        th:text="${__${T(se.cryptosnack.demo.config.util.AppReferences).CURRENT_USER}__}"/>
 </thlogic>
