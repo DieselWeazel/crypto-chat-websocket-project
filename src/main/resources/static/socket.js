@@ -12,9 +12,9 @@ function connect() {
 }
 
 function showNewMessage(message) {
-    $("<tr><td class='td-date'>" + JSON.parse(message.body).timeSent +"</td>" +
+    $("#chat").append("<tr><td class='td-date'>" + JSON.parse(message.body).timeSent +"</td>" +
         "<td class='td-user'>" + JSON.parse(message.body).sentFrom +":</td>" +
-        "<td class='td-message'>" + JSON.parse(message.body).message + "</td></tr>").prependTo($("#chat"));
+        "<td class='td-message'>" + JSON.parse(message.body).message + "</td></tr>");
 }
 
 function sendMessage() {
