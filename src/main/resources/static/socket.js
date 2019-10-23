@@ -8,15 +8,25 @@ function connect() {
         stomp.subscribe('/topic/messages', function(data) {
             showNewMessage(data);
         });
+        stomp.send("/app/getAll");
     });
 }
 
 function showNewMessage(message) {
-    $("#chat").append("<tr><td>" + JSON.parse(message.body).message + "</td></tr>");
+	var messages = JSON.parse(message.body);
+	var timeSent;
+	
+	messages.forEach(function(item, index){
+		
+		timeSent = item.messageSent;
+		
+		$("#chat").append("<tr><td>" + timeSent + ": " + item.message + "</td></tr>");
+	})
     // + "<tr><td>" + +"</td></tr>");
 }
 
 function sendMessage() {
+	
     // console.log("sendName(): " + JSON.stringify({'message': $("#chatInput").val()}));
     stomp.send("/app/chat", {}, JSON.stringify({'message': $("#chatInput").val()}));
 }

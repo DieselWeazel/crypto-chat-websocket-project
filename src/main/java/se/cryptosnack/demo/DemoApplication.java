@@ -1,11 +1,9 @@
 package se.cryptosnack.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import se.cryptosnack.demo.model.Message;
 import se.cryptosnack.demo.model.SentDTO;
@@ -22,16 +20,8 @@ public class DemoApplication {
   }
 
   @Bean
-  public CommandLineRunner addSomeMessages(MessageService<Message, SentDTO> messageService) {
-    return args -> {
-      messageService.save(new SentDTO("Hello"));
-      messageService.save(new SentDTO("Sup"));
-      messageService.save(new SentDTO("Yo dude"));
-    };
-  }
-
-  @Bean
-  public CommandLineRunner addSomeUsers(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+  public CommandLineRunner addSomeUsers(UserRepository userRepository,
+      PasswordEncoder passwordEncoder) {
     return args -> {
       userRepository.save(new User("august", passwordEncoder.encode("august")));
       userRepository.save(new User("david", passwordEncoder.encode("david")));
@@ -40,6 +30,14 @@ public class DemoApplication {
     };
   }
 
-
+  @Bean
+  public CommandLineRunner addSomeMessages(MessageService<Message, SentDTO> messageService,
+      UserRepository userRepository) {
+    return args -> {
+      messageService.save(new SentDTO("Hello", userRepository.findByUsername("august")));
+      messageService.save(new SentDTO("Sup", userRepository.findByUsername("jonte")));
+      messageService.save(new SentDTO("Yo dude", userRepository.findByUsername("erik")));
+    };
+  }
 
 }

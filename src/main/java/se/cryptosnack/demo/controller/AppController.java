@@ -14,29 +14,29 @@ import se.cryptosnack.demo.service.MessageService;
 public class AppController {
 
 
-    private MessageService<Message, SentDTO> messageService;
+  private MessageService<Message, SentDTO> messageService;
 
-    @Autowired
-    public AppController(MessageService<Message, SentDTO> messageService) {
-        this.messageService = messageService;
-    }
+  @Autowired
+  public AppController(MessageService<Message, SentDTO> messageService) {
+    this.messageService = messageService;
+  }
 
-    @GetMapping(PageViews.INDEX)
-    public String start() {
-        return PageViews.HOME;
-    }
+  @GetMapping(PageViews.INDEX)
+  public String start() {
+    return PageViews.HOME;
+  }
 
-    @GetMapping("/" + PageViews.CHAT)
-    public String chat(Model model) {
-        // August, här är ett exempel på hur du kan ladda in genom Thymeleaf
-//        model.addAttribute(AppReferences.CHAT_HISTORY, messageService.loadHistory());
-        return PageViews.CHAT;
-    }
+  @GetMapping("/" + PageViews.CHAT)
+  public String chat(Model model) {
+    // August, här är ett exempel på hur du kan ladda in genom Thymeleaf
+    // model.addAttribute(AppReferences.CHAT_HISTORY, messageService.loadHistory());
+    return PageViews.CHAT;
+  }
 
-    @GetMapping("/" + PageViews.LOGIN)
-    public String login() {
-        return PageViews.LOGIN;
-    }
+  @GetMapping("/" + PageViews.LOGIN)
+  public String login() {
+    return PageViews.LOGIN;
+  }
 
 
 }

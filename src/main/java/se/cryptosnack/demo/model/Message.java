@@ -1,57 +1,79 @@
 package se.cryptosnack.demo.model;
 
-import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="Message")
+@Table(name = "Message")
 public class Message {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "message_id")
-    private Long id;
-    private String message;
-    private LocalDateTime messageSent;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "message_id")
+  private Long id;
 
-    @ManyToOne
-    private User user;
+  @Column
+  private String message;
 
-    public Message() {
-    }
+  @Column
+  private LocalDateTime timeSent;
 
-    public Message(String message) {
-        this.message = message;
-        this.messageSent = LocalDateTime.now();
-    }
+  @ManyToOne
+  private User user;
 
-    public Message(String message, LocalDateTime messageSent) {
-        this.message = message;
-        this.messageSent = messageSent;
-    }
+  public Message() {}
 
-    public Long getId() {
-        return id;
-    }
+  public Message(String message) {
+    this.message = message;
+    this.timeSent = LocalDateTime.now();
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Message(String message, LocalDateTime timeSent) {
+    this.message = message;
+    this.timeSent = timeSent;
+  }
 
-    public String getMessage() {
-        return message;
-    }
+  public Message(String message, User user, LocalDateTime timeSent) {
+    this.message = message;
+    this.user = user;
+    this.timeSent = timeSent;
+  }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public LocalDateTime getMessageSent() {
-        return messageSent;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setMessageSent(LocalDateTime messageSent) {
-        this.messageSent = messageSent;
-    }
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public LocalDateTime getTimeSent() {
+    return timeSent;
+  }
+
+  public void setTimeSent(LocalDateTime timeSent) {
+    this.timeSent = timeSent;
+  }
+
+  @Override
+  public String toString() {
+    return "Message [id=" + id + ", message=" + message + ", timeSent=" + timeSent + ", user="
+        + user + "]";
+  }
+
+
 }
