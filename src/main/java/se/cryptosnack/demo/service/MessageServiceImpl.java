@@ -32,7 +32,7 @@ public class MessageServiceImpl implements EntityService<SentDTO> {
     public List<SentDTO> loadAll() {
 //        messageRepository.findAll().stream().map(message -> log.info("Loading message = {}", new Message(message.getMessage(), message.getMessageSent()));
 //        log.info("loading Message = {}", messageRepository.findAll().stream().map(message -> new Message(message.getMessage(), message.getMessageSent())).collect(Collectors.toList()));
-        return messageRepository.findAll().stream().map(message -> new SentDTO(passWordEncoder.encode(message.getMessage()), message.getUser().getUsername(), dateFormatService.getDateTimeSent(message.getMessageSent()))).collect(Collectors.toList());
+        return messageRepository.findAll().stream().map(message -> new SentDTO(message.getMessage(), message.getUser().getUsername(), dateFormatService.getDateTimeSent(message.getMessageSent()))).collect(Collectors.toList());
     }
 
     @Override

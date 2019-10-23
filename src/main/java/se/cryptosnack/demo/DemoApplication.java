@@ -3,6 +3,8 @@ package se.cryptosnack.demo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import se.cryptosnack.demo.model.Message;
@@ -12,7 +14,7 @@ import se.cryptosnack.demo.service.EntityService;
 import se.cryptosnack.demo.service.repositories.UserRepository;
 
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplication extends SpringBootServletInitializer {
 
 
   public static void main(String[] args) {
@@ -38,6 +40,8 @@ public class DemoApplication {
     };
   }
 
-
-
+  @Override
+  protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    return super.configure(builder);
+  }
 }
