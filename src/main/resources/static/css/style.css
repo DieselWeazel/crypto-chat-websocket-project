@@ -65,10 +65,9 @@ header {
 
 /*GROUPS OF ELEMENTS*/
 #message-submit-form {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 2.5em;
 }
-
 
 
 .wrapper{
@@ -79,19 +78,21 @@ header {
     justify-content: center;
     font-family: 'Lato', sans-serif;
     text-align: center;
+    background-color: teal;
 }
 
 /*Creates a rotated DIV, CSS Solution. (Not my idea, just very cool solution to the problem)*/
 /*https://stackoverflow.com/questions/18614301/keep-overflow-div-scrolled-to-bottom-unless-user-scrolls-up*/
 #div-scroll {
     background-color: lightblue;
-    height: 40em;
+    height: 30em;
     width: 70em;
     overflow-x: hidden;
     overflow-y: auto;
-    transform: rotate(180deg);
+    /*transform: rotate(180deg);*/
     /*direction:rtl;*/
     text-align:right;
+    border: 2px solid #1e3b39;
 }
 #conversation {
     text-align: left;
@@ -117,7 +118,7 @@ td {
 }
 tr {
     overflow: hidden;
-    transform: rotate(180deg);
+    /*transform: rotate(180deg);*/
 }
 
 .td-date {
@@ -142,4 +143,12 @@ h3  {
     font-size: 1.2em;
 }
 
+#chat-container{
 
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: flex-start;
+
+
+}

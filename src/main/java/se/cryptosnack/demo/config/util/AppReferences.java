@@ -8,4 +8,5 @@ public final class AppReferences {
 
     // Security Context References
     public static final String USER_ROLE = "USER";
+
 }
