@@ -39,7 +39,7 @@ public class AppController {
     @GetMapping("/" + PageViews.CHAT)
     public String chat(Model model) {
         // August, här är ett exempel på hur du kan ladda in genom Thymeleaf
-//        model.addAttribute(AppReferences.CHAT_HISTORY, messageService.loadHistory());
+        model.addAttribute(AppReferences.CHAT_HISTORY, entityService.loadAll());
 
         model.addAttribute(AppReferences.CURRENT_USER, customUserDetailsService.getUser().getUsername());
         log.info("Current Username String = {}", customUserDetailsService.getUser().getUsername());

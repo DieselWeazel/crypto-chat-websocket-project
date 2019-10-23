@@ -30,6 +30,11 @@
                 <!--  A rotated DIV, to give the effect of most recent messages in the bottom -->
                 <div id="div-scroll">
                     <table id="conversation">
+                        <tr th:each="sentDTO : ${CHAT_HISTORY}">
+                            <td th:text="${sentDTO.timeSent}" class="td-date"/>
+                            <td th:text="${sentDTO.sentFrom}" class="td-user"/>
+                            <td th:text="${sentDTO.message}" class="td-message"/>
+                        </tr>
                         <tbody id="chat">
                         </tbody>
                     </table>
