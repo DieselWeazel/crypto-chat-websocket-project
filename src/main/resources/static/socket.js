@@ -1,7 +1,7 @@
 var stomp = null;
 
 function connect() {
-    var socket = new SockJS('/cryptosnack-websocket');
+    var socket = new SockJS('demo-0.0.1-SNAPSHOT/cryptosnack-websocket');
     stomp = Stomp.over(socket);
     stomp.connect({}, function(frame){
         // setConnected(true);

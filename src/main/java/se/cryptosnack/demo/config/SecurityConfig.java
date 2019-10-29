@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                .antMatchers("/chat").hasRole("USER")
                 .antMatchers("/", "/home").permitAll()
+            .antMatchers("webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -61,6 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers("/css/**", "/img/**", "/static/**"
-                ,"/api/**", "/user/**", "api/user/**", "h2-console/**");
+                ,"/api/**", "/user/**", "api/user/**", "h2-console/**", "webjars/**");
     }
 }
